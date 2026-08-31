@@ -10,16 +10,15 @@ saga-security-microservices/
 ```
 saga-security-microservices/
 ├── buildSrc/                      <-- Nơi chứa cấu hình Gradle tập trung (Convention Plugins)
-│   ├── build.gradle.kts
+│   ├── build.gradle.
 │   └── src/main/kotlin/spring-boot-common.gradle.kts
 ├── auth-service/                  <-- Service nhỏ số 1
-│   └── build.gradle.kts
+│   └── build.gradle
 ├── order-service/                 <-- Service nhỏ số 2
-│   └── build.gradle.kts
+│   └── build.gradle
 ├── shared-library/                <-- Thư viện dùng chung (DTO, Utils...)
-│   └── build.gradle.kts
-├── build.gradle.kts               <-- File build của root (thường để trống)
-├── settings.gradle.kts            <-- Khai báo danh sách các service
+│   └── build.gradle
+├── build.gradle.          <-- File build của root (thường để trống)
+├── settings.gradle         <-- Khai báo danh sách các service
 └── gradle.properties              <-- Định nghĩa phiên bản Spring Boot, Java
-
 ```

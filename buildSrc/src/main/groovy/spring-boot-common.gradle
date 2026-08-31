@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management'
+}
+
+// Đọc version tập trung từ gradle.properties ở root
+def javaVersion = providers.gradleProperty('javaVersion').getOrElse('21')
+def springBootVersion = providers.gradleProperty('springBootVersion').getOrElse('3.3.4')
+
+java {
+    toolchain {
+        // Java 21 là bắt buộc để dùng Virtual Threads (JEP 444)
+        languageVersion = JavaLanguageVersion.of(javaVersion.toInteger())
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}

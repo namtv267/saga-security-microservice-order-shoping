@@ -1,0 +1,12 @@
+plugins {
+    id 'spring-boot-common'
+    id 'java-library'
+}
+
+//shared-library only JAR library include DTO/Utils common
+//not apply plugin org.springframework.boot at here
+
+dependencies {
+    api 'org.springframework:spring-web'
+    api 'jakarta.validation:jakarta.validation-api'
+}
